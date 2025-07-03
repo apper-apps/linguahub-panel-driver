@@ -18,7 +18,7 @@ const Timetable = () => {
       setLoading(true)
       setError(null)
       const data = await getTimetableData()
-      setClasses(data)
+      setClasses(data || [])
     } catch (err) {
       setError(err.message || 'Failed to load timetable data')
       toast.error('Failed to load timetable data')

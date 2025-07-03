@@ -5,7 +5,7 @@ import FileBrowser from '@/components/organisms/FileBrowser'
 import Loading from '@/components/ui/Loading'
 import Error from '@/components/ui/Error'
 import Empty from '@/components/ui/Empty'
-import { getFiles } from '@/services/api/fileService'
+import { getFiles, downloadFile } from '@/services/api/fileService'
 
 const Files = () => {
   const [files, setFiles] = useState([])
@@ -17,7 +17,7 @@ const Files = () => {
       setLoading(true)
       setError(null)
       const data = await getFiles()
-      setFiles(data)
+      setFiles(data || [])
     } catch (err) {
       setError(err.message || 'Failed to load files')
       toast.error('Failed to load files')
@@ -30,12 +30,16 @@ const Files = () => {
     loadFiles()
   }, [])
   
-  const handleDownload = (file) => {
-    // Simulate file download
-    toast.success(`Downloading ${file.name}...`)
-    setTimeout(() => {
-      toast.success(`${file.name} downloaded successfully!`)
-    }, 2000)
+const handleDownload = async (file) => {
+    try {
+      toast.info(`Downloading ${file.Name}...`)
+      const result = await downloadFile(file.Id)
+      if (result.success) {
+        toast.success(result.message)
+      }
+    } catch (err) {
+      toast.error(`Failed to download ${file.Name}`)
+    }
   }
   
   if (loading) {

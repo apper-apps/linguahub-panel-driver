@@ -17,7 +17,7 @@ const Announcements = () => {
       setLoading(true)
       setError(null)
       const data = await getAnnouncements()
-      setAnnouncements(data)
+      setAnnouncements(data || [])
     } catch (err) {
       setError(err.message || 'Failed to load announcements')
       toast.error('Failed to load announcements')

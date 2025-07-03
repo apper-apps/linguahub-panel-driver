@@ -1,20 +1,75 @@
-import mockAnnouncements from '@/services/mockData/announcements.json'
-
 const getAnnouncements = async () => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 300))
-  
-  return [...mockAnnouncements].sort((a, b) => new Date(b.date) - new Date(a.date))
+  try {
+    const { ApperClient } = window.ApperSDK;
+    const apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    });
+    
+    const params = {
+      fields: [
+        { field: { Name: "Name" } },
+        { field: { Name: "title" } },
+        { field: { Name: "content" } },
+        { field: { Name: "date" } },
+        { field: { Name: "priority" } },
+        { field: { Name: "author" } },
+        { field: { Name: "target_audience" } }
+      ],
+      orderBy: [
+        {
+          fieldName: "date",
+          sorttype: "DESC"
+        }
+      ]
+    };
+    
+    const response = await apperClient.fetchRecords('announcement', params);
+    
+    if (!response.success) {
+      console.error(response.message);
+      throw new Error(response.message);
+    }
+    
+    return response.data || [];
+  } catch (error) {
+    console.error("Error fetching announcements:", error);
+    throw error;
+  }
 }
 
 const getAnnouncementById = async (id) => {
-  await new Promise(resolve => setTimeout(resolve, 200))
-  
-  const announcement = mockAnnouncements.find(a => a.Id === parseInt(id))
-  if (!announcement) {
-    throw new Error('Announcement not found')
+  try {
+    const { ApperClient } = window.ApperSDK;
+    const apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    });
+    
+    const params = {
+      fields: [
+        { field: { Name: "Name" } },
+        { field: { Name: "title" } },
+        { field: { Name: "content" } },
+        { field: { Name: "date" } },
+        { field: { Name: "priority" } },
+        { field: { Name: "author" } },
+        { field: { Name: "target_audience" } }
+      ]
+    };
+    
+    const response = await apperClient.getRecordById('announcement', parseInt(id), params);
+    
+    if (!response.success) {
+      console.error(response.message);
+      throw new Error(response.message || 'Announcement not found');
+    }
+    
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching announcement with ID ${id}:`, error);
+    throw error;
   }
-  return { ...announcement }
 }
 
 export { getAnnouncements, getAnnouncementById }

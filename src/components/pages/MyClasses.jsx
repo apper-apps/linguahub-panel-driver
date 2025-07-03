@@ -20,7 +20,7 @@ const MyClasses = () => {
       setLoading(true)
       setError(null)
       const data = await getStudentClasses()
-      setClasses(data)
+      setClasses(data || [])
     } catch (err) {
       setError(err.message || 'Failed to load classes')
       toast.error('Failed to load classes')

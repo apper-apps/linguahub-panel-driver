@@ -20,7 +20,7 @@ const Attendance = () => {
       setLoading(true)
       setError(null)
       const data = await getAttendanceData()
-      setAttendanceData(data)
+      setAttendanceData(data || [])
     } catch (err) {
       setError(err.message || 'Failed to load attendance data')
       toast.error('Failed to load attendance data')

@@ -11,11 +11,13 @@ import Loading from '@/components/ui/Loading'
 import Error from '@/components/ui/Error'
 import Empty from '@/components/ui/Empty'
 import { getDashboardData } from '@/services/api/dashboardService'
+import { useSelector } from 'react-redux'
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { user } = useSelector((state) => state.user)
   
   const loadDashboardData = async () => {
     try {
@@ -57,10 +59,10 @@ const Dashboard = () => {
       className="space-y-6"
     >
       {/* Welcome Header */}
-      <div className="flex items-center justify-between">
+<div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
-            Welcome back, John! 👋
+            Welcome back, {user?.firstName || 'Student'}! 👋
           </h1>
           <p className="text-gray-600 mt-1">
             Today is {format(new Date(), 'EEEE, MMMM dd, yyyy')}
@@ -69,7 +71,7 @@ const Dashboard = () => {
         <div className="flex items-center space-x-2">
           <ApperIcon name="Calendar" className="w-5 h-5 text-primary" />
           <span className="text-sm font-medium text-gray-700">
-            {todayClasses.length} classes today
+            {todayClasses?.length || 0} classes today
           </span>
         </div>
       </div>

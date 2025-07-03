@@ -1,12 +1,28 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
 import ApperIcon from '@/components/ApperIcon'
 import Avatar from '@/components/atoms/Avatar'
 import Button from '@/components/atoms/Button'
 import SearchBar from '@/components/molecules/SearchBar'
+import { AuthContext } from '@/App'
 
-const Header = ({ onMenuClick, user = { name: 'John Doe', email: 'john@example.com' } }) => {
+const Header = ({ onMenuClick }) => {
   const [showProfile, setShowProfile] = useState(false)
+  const { user } = useSelector((state) => state.user)
+  const { logout } = useContext(AuthContext)
+  
+  const userName = user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() : 'User'
+  const userEmail = user?.emailAddress || 'user@example.com'
+  
+  const handleLogout = async () => {
+    try {
+      await logout()
+      setShowProfile(false)
+    } catch (error) {
+      console.error('Logout failed:', error)
+    }
+  }
   
   return (
     <header className="bg-white border-b border-gray-200 px-4 py-4 lg:px-6">
@@ -40,12 +56,12 @@ const Header = ({ onMenuClick, user = { name: 'John Doe', email: 'john@example.c
               className="flex items-center space-x-3 hover:bg-gray-50 rounded-lg p-2 transition-colors duration-200"
             >
               <Avatar
-                fallback={user.name.split(' ').map(n => n[0]).join('')}
+                fallback={userName.split(' ').map(n => n[0]).join('')}
                 size="medium"
               />
               <div className="hidden sm:block text-left">
-                <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                <p className="text-xs text-gray-500">{user.email}</p>
+                <p className="text-sm font-medium text-gray-900">{userName}</p>
+                <p className="text-xs text-gray-500">{userEmail}</p>
               </div>
               <ApperIcon name="ChevronDown" className="w-4 h-4 text-gray-500" />
             </button>
@@ -66,7 +82,10 @@ const Header = ({ onMenuClick, user = { name: 'John Doe', email: 'john@example.c
                   <span>Settings</span>
                 </button>
                 <div className="border-t border-gray-200 my-1"></div>
-                <button className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 w-full">
+                <button 
+                  onClick={handleLogout}
+                  className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 w-full"
+                >
                   <ApperIcon name="LogOut" className="w-4 h-4" />
                   <span>Sign out</span>
                 </button>
