@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "title": "Welcome to the New Semester!",
+    "content": "We're excited to welcome all our students to the new semester. Please check your class schedules and make sure you have all the required materials. If you have any questions, don't hesitate to contact your teachers or the administration office.",
+    "date": "2024-03-15T09:00:00Z",
+    "priority": "High",
+    "author": "Academic Director",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 2,
+    "title": "Library Hours Extended",
+    "content": "Good news! Our library will now be open until 9 PM on weekdays to provide more study time for our students. New resources have also been added to our digital collection.",
+    "date": "2024-03-14T14:30:00Z",
+    "priority": "Medium",
+    "author": "Library Staff",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 3,
+    "title": "Upcoming Cultural Events",
+    "content": "Join us for our monthly cultural exchange event on March 25th. We'll have presentations from students about their home countries, traditional food, and music. It's a great opportunity to practice your language skills!",
+    "date": "2024-03-13T11:15:00Z",
+    "priority": "Low",
+    "author": "Student Activities",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 4,
+    "title": "Important: Class Schedule Changes",
+    "content": "Due to teacher availability, some classes have been rescheduled for next week. Please check your updated timetable in the system. Students affected will receive individual notifications.",
+    "date": "2024-03-12T16:45:00Z",
+    "priority": "High",
+    "author": "Administration",
+    "targetAudience": ["affected_students"]
+  },
+  {
+    "Id": 5,
+    "title": "New Language Exchange Program",
+    "content": "We're launching a new language exchange program where students can partner with native speakers for conversation practice. Sign-up forms are available at the front desk.",
+    "date": "2024-03-11T10:20:00Z",
+    "priority": "Medium",
+    "author": "Language Coordinator",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 6,
+    "title": "Technology Workshop Next Week",
+    "content": "Learn how to use our new learning management system and digital resources. The workshop will be held on March 20th at 2 PM in the computer lab. All students are welcome to attend.",
+    "date": "2024-03-10T13:00:00Z",
+    "priority": "Low",
+    "author": "IT Support",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 7,
+    "title": "Student Feedback Survey",
+    "content": "Your opinion matters! Please take a few minutes to complete our semester feedback survey. Your responses help us improve our courses and services. The survey link has been sent to your email.",
+    "date": "2024-03-09T08:30:00Z",
+    "priority": "Medium",
+    "author": "Quality Assurance",
+    "targetAudience": ["all"]
+  },
+  {
+    "Id": 8,
+    "title": "Holiday Schedule Notice",
+    "content": "Please note that the school will be closed on March 30th for the spring holiday. Regular classes will resume on April 1st. Make sure to complete any assignments due during this period.",
+    "date": "2024-03-08T15:10:00Z",
+    "priority": "High",
+    "author": "Administration",
+    "targetAudience": ["all"]
+  }
+]

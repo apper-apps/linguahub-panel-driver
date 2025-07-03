@@ -1,0 +1,114 @@
+[
+  {
+    "Id": 1,
+    "courseName": "English Conversation A2",
+    "teacher": "Sarah Johnson",
+    "language": "English",
+    "level": "A2",
+    "schedule": {
+      "day": "Monday",
+      "time": "09:00"
+    },
+    "time": "09:00 - 10:30",
+    "room": "Room 101",
+    "description": "Improve your English conversation skills with practical exercises and real-world scenarios."
+  },
+  {
+    "Id": 2,
+    "courseName": "Spanish Grammar B1",
+    "teacher": "Carlos Martinez",
+    "language": "Spanish",
+    "level": "B1",
+    "schedule": {
+      "day": "Tuesday",
+      "time": "10:00"
+    },
+    "time": "10:00 - 11:30",
+    "room": "Room 203",
+    "description": "Master Spanish grammar fundamentals with interactive lessons and practice exercises."
+  },
+  {
+    "Id": 3,
+    "courseName": "French Literature C1",
+    "teacher": "Marie Dubois",
+    "language": "French",
+    "level": "C1",
+    "schedule": {
+      "day": "Wednesday",
+      "time": "14:00"
+    },
+    "time": "14:00 - 15:30",
+    "room": "Room 305",
+    "description": "Explore French literature and culture through classic and contemporary works."
+  },
+  {
+    "Id": 4,
+    "courseName": "German Business A2",
+    "teacher": "Hans Mueller",
+    "language": "German",
+    "level": "A2",
+    "schedule": {
+      "day": "Thursday",
+      "time": "11:00"
+    },
+    "time": "11:00 - 12:30",
+    "room": "Room 102",
+    "description": "Learn German for business contexts including meetings, presentations, and negotiations."
+  },
+  {
+    "Id": 5,
+    "courseName": "Italian Pronunciation B2",
+    "teacher": "Giulia Rossi",
+    "language": "Italian",
+    "level": "B2",
+    "schedule": {
+      "day": "Friday",
+      "time": "13:00"
+    },
+    "time": "13:00 - 14:30",
+    "room": "Room 204",
+    "description": "Perfect your Italian pronunciation with phonetic exercises and speaking practice."
+  },
+  {
+    "Id": 6,
+    "courseName": "Portuguese Culture A1",
+    "teacher": "Ana Silva",
+    "language": "Portuguese",
+    "level": "A1",
+    "schedule": {
+      "day": "Saturday",
+      "time": "09:00"
+    },
+    "time": "09:00 - 10:30",
+    "room": "Room 301",
+    "description": "Introduction to Portuguese language and culture for complete beginners."
+  },
+  {
+    "Id": 7,
+    "courseName": "English Writing B2",
+    "teacher": "David Wilson",
+    "language": "English",
+    "level": "B2",
+    "schedule": {
+      "day": "Monday",
+      "time": "15:00"
+    },
+    "time": "15:00 - 16:30",
+    "room": "Room 105",
+    "description": "Develop advanced English writing skills for academic and professional purposes."
+  },
+  {
+    "Id": 8,
+    "courseName": "Spanish Conversation C2",
+    "teacher": "Elena Rodriguez",
+    "language": "Spanish",
+    "level": "C2",
+    "schedule": {
+      "day": "Tuesday",
+      "time": "16:00"
+    },
+    "time": "16:00 - 17:30",
+    "room": "Room 207",
+    "description": "Advanced Spanish conversation for near-native speakers focusing on complex topics."
+  }
+]
