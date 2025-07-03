@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux'
 import ApperIcon from '@/components/ApperIcon'
 
 const Sidebar = ({ isOpen, onClose }) => {
-  const { isAdmin } = useSelector((state) => state.user)
-  
+  const { isAdmin, isStudent } = useSelector((state) => state.user)
   const menuItems = [
     { path: '/', name: 'Dashboard', icon: 'Home' },
     { path: '/timetable', name: 'Timetable', icon: 'Calendar' },
@@ -15,8 +14,8 @@ const Sidebar = ({ isOpen, onClose }) => {
     { path: '/my-classes', name: 'My Classes', icon: 'BookOpen' }
   ]
   
-  // Add admin dashboard for admin users
-  if (isAdmin) {
+// Add admin dashboard for admin users only, not for students
+  if (isAdmin && !isStudent) {
     menuItems.push({ path: '/admin', name: 'Admin Dashboard', icon: 'Settings' })
   }
   

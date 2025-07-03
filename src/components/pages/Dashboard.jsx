@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const { user } = useSelector((state) => state.user)
+  const { user, isStudent } = useSelector((state) => state.user)
   
   const loadDashboardData = async () => {
     try {
@@ -62,7 +62,7 @@ const Dashboard = () => {
 <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
-            Welcome back, {user?.firstName || 'Student'}! 👋
+            Welcome back, {user?.firstName || (isStudent ? 'Student' : 'User')}! 👋
           </h1>
           <p className="text-gray-600 mt-1">
             Today is {format(new Date(), 'EEEE, MMMM dd, yyyy')}

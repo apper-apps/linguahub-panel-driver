@@ -9,7 +9,7 @@ import { AuthContext } from '@/App'
 
 const Header = ({ onMenuClick }) => {
   const [showProfile, setShowProfile] = useState(false)
-  const { user } = useSelector((state) => state.user)
+  const { user, isStudent } = useSelector((state) => state.user)
   const { logout } = useContext(AuthContext)
   
   const userName = user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() : 'User'
