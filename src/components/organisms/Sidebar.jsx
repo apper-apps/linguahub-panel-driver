@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import ApperIcon from '@/components/ApperIcon'
 
 const Sidebar = ({ isOpen, onClose }) => {
-  const { user } = useSelector((state) => state.user)
+  const { isAdmin } = useSelector((state) => state.user)
   
   const menuItems = [
     { path: '/', name: 'Dashboard', icon: 'Home' },
@@ -16,7 +16,6 @@ const Sidebar = ({ isOpen, onClose }) => {
   ]
   
   // Add admin dashboard for admin users
-  const isAdmin = user?.role === 'admin' || user?.emailAddress?.includes('@admin.') || user?.accounts?.[0]?.role === 'admin'
   if (isAdmin) {
     menuItems.push({ path: '/admin', name: 'Admin Dashboard', icon: 'Settings' })
   }

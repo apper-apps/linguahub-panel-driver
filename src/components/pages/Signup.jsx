@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useContext } from 'react';
 import { AuthContext } from '@/App';
-import { validateInviteToken } from '@/services/api/inviteService';
+import { validateInviteToken, acceptInvite } from '@/services/api/inviteService';
 function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,13 +39,34 @@ function Signup() {
     validateInvite();
   }, [searchParams]);
   
-  useEffect(() => {
+useEffect(() => {
     if (isInitialized && inviteValid) {
       // Show signup UI in this component
       const { ApperUI } = window.ApperSDK;
+      
+      // Configure ApperUI with success callback to handle invite acceptance
+      const { ApperClient } = window.ApperSDK;
+      const client = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+      
+      ApperUI.setup(client, {
+        target: '#authentication',
+        clientId: import.meta.env.VITE_APPER_PROJECT_ID,
+        view: 'signup',
+        onSuccess: async function (user) {
+          // Accept the invite when user successfully signs up
+          const inviteEmail = searchParams.get('invite');
+          if (inviteEmail && user) {
+            await acceptInvite(inviteEmail);
+          }
+        }
+      });
+      
       ApperUI.showSignup("#authentication");
     }
-  }, [isInitialized, inviteValid]);
+  }, [isInitialized, inviteValid, searchParams]);
   
   if (validating) {
     return (

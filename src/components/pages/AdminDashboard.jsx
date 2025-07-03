@@ -18,10 +18,7 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null)
   const [sending, setSending] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '' })
-  const { user } = useSelector((state) => state.user)
-
-  // Check if user is admin
-  const isAdmin = user?.role === 'admin' || user?.emailAddress?.includes('@admin.') || user?.accounts?.[0]?.role === 'admin'
+const { isAdmin } = useSelector((state) => state.user)
 
   const loadInvites = async () => {
     try {
