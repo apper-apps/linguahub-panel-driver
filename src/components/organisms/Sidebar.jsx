@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
 import ApperIcon from '@/components/ApperIcon'
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const { user } = useSelector((state) => state.user)
+  
   const menuItems = [
     { path: '/', name: 'Dashboard', icon: 'Home' },
     { path: '/timetable', name: 'Timetable', icon: 'Calendar' },
@@ -11,6 +14,12 @@ const Sidebar = ({ isOpen, onClose }) => {
     { path: '/announcements', name: 'Announcements', icon: 'Bell' },
     { path: '/my-classes', name: 'My Classes', icon: 'BookOpen' }
   ]
+  
+  // Add admin dashboard for admin users
+  const isAdmin = user?.role === 'admin' || user?.emailAddress?.includes('@admin.') || user?.accounts?.[0]?.role === 'admin'
+  if (isAdmin) {
+    menuItems.push({ path: '/admin', name: 'Admin Dashboard', icon: 'Settings' })
+  }
   
   return (
     <>
@@ -24,7 +33,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <h1 className="text-xl font-bold gradient-text">LinguaHub</h1>
           </div>
           
-          <nav className="space-y-2">
+<nav className="space-y-2">
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -78,7 +87,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                 </button>
               </div>
               
-              <nav className="space-y-2">
+<nav className="space-y-2">
                 {menuItems.map((item) => (
                   <NavLink
                     key={item.path}

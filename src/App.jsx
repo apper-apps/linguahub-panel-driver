@@ -10,6 +10,7 @@ import Attendance from '@/components/pages/Attendance'
 import Files from '@/components/pages/Files'
 import Announcements from '@/components/pages/Announcements'
 import MyClasses from '@/components/pages/MyClasses'
+import AdminDashboard from '@/components/pages/AdminDashboard'
 import Login from '@/components/pages/Login';
 import Signup from '@/components/pages/Signup';
 import Callback from '@/components/pages/Callback';
@@ -129,13 +130,14 @@ function App() {
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/prompt-password/:appId/:emailAddress/:provider" element={<PromptPassword />} />
         <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
-        <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/files" element={<Files />} />
           <Route path="/announcements" element={<Announcements />} />
           <Route path="/my-classes" element={<MyClasses />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Route>
       </Routes>
       <ToastContainer
